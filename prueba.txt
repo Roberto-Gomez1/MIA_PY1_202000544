@@ -1,0 +1,14 @@
+mkdisk -size=300 -path="/home/Disco1.dsk" -unit=M -fit=BF
+rmdisk -path="/home/Disco1.dsk"
+fdisk -size=300 -path="/home/Disco1.dsk" -name="Particion1"
+mount -path="/home/Disco1.dsk" -name="Part1"
+unmount -id="061XXX"
+mkfs -type=full -id="061Disco1" -fs=3fs
+login -user="mi usuario" -pass="mi pwd" -id="061Disco1"
+logout
+mkgrp -name="usuarios"
+rmgrp -name="usuarios"
+mkusr -user="user1" -pass="usuario" -grp="usuarios"
+rmusr -user="user1"
+mkfile -path="/home/user/docs/b.txt" -r -cont="/home/Documents/b.txt"
+cat -file 1="/home/a.txt" -file 2="/home/b.txt" -file 3="/home/c.txt"
