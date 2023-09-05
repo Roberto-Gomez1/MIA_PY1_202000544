@@ -37,23 +37,23 @@ Rule 27    param_size -> GUION SIZE IGUAL ENTERO
 Rule 28    param_path -> GUION PATH IGUAL CADENA
 Rule 29    param_unit -> GUION UNIT IGUAL UNIDAD_CADENA
 Rule 30    param_fit -> GUION FIT IGUAL FIT_CADENA
-Rule 31    command_fdisk -> FDISK parameters_fdisk
-Rule 32    parameters_fdisk -> parameters_fdisk parameter_fdisk
-Rule 33    parameters_fdisk -> parameter_fdisk
-Rule 34    parameter_fdisk -> param_size
-Rule 35    parameter_fdisk -> param_path
-Rule 36    parameter_fdisk -> param_unit
-Rule 37    parameter_fdisk -> param_fit
-Rule 38    parameter_fdisk -> param_type
-Rule 39    parameter_fdisk -> param_delete
-Rule 40    parameter_fdisk -> param_name
-Rule 41    parameter_fdisk -> param_add
-Rule 42    param_type -> GUION TYPE IGUAL TYPE_CADENA
-Rule 43    param_type -> GUION TYPE IGUAL FULL
-Rule 44    param_delete -> GUION DELETE IGUAL FULL
-Rule 45    param_add -> GUION ADD IGUAL ENTERO
-Rule 46    param_name -> GUION NAME IGUAL CADENA
-Rule 47    command_rmdisk -> RMDISK GUION PATH IGUAL CADENA
+Rule 31    command_rmdisk -> RMDISK GUION PATH IGUAL CADENA
+Rule 32    command_fdisk -> FDISK parameters_fdisk
+Rule 33    parameters_fdisk -> parameters_fdisk parameter_fdisk
+Rule 34    parameters_fdisk -> parameter_fdisk
+Rule 35    parameter_fdisk -> param_size
+Rule 36    parameter_fdisk -> param_path
+Rule 37    parameter_fdisk -> param_unit
+Rule 38    parameter_fdisk -> param_fit
+Rule 39    parameter_fdisk -> param_type
+Rule 40    parameter_fdisk -> param_delete
+Rule 41    parameter_fdisk -> param_name
+Rule 42    parameter_fdisk -> param_add
+Rule 43    param_type -> GUION TYPE IGUAL TYPE_CADENA
+Rule 44    param_type -> GUION TYPE IGUAL FULL
+Rule 45    param_delete -> GUION DELETE IGUAL FULL
+Rule 46    param_add -> GUION ADD IGUAL ENTERO
+Rule 47    param_name -> GUION NAME IGUAL CADENA
 Rule 48    command_mount -> MOUNT parameters_mount
 Rule 49    parameters_mount -> parameters_mount parameter_mount
 Rule 50    parameters_mount -> parameter_mount
@@ -104,25 +104,25 @@ Rule 94    param_file -> GUION FILEN ENTERO IGUAL CADENA
 
 Terminals, with rules where they appear
 
-ADD                  : 45
-CADENA               : 19 28 46 47 53 60 68 69 71 72 79 80 89 94
+ADD                  : 46
+CADENA               : 19 28 31 47 53 60 68 69 71 72 79 80 89 94
 CAT                  : 90
 CONT                 : 89
-DELETE               : 44
-ENTERO               : 27 45 94
+DELETE               : 45
+ENTERO               : 27 46 94
 EXECUTE              : 19
-FDISK                : 31
+FDISK                : 32
 FILEN                : 94
 FIT                  : 30
 FIT_CADENA           : 30
 FS                   : 61
 FS_CADENA            : 61
-FULL                 : 43 44
+FULL                 : 44 45
 GRP                  : 79
-GUION                : 19 27 28 29 30 42 43 44 45 46 47 53 60 61 68 69 71 72 79 80 88 89 94
+GUION                : 19 27 28 29 30 31 43 44 45 46 47 53 60 61 68 69 71 72 79 80 88 89 94
 ID                   : 
 ID_UNMOUNT           : 53 60
-IGUAL                : 19 27 28 29 30 42 43 44 45 46 47 53 60 61 68 69 71 72 79 80 89 94
+IGUAL                : 19 27 28 29 30 31 43 44 45 46 47 53 60 61 68 69 71 72 79 80 89 94
 LOGIN                : 62
 LOGOUT               : 70
 MKDISK               : 20
@@ -131,16 +131,16 @@ MKFS                 : 54
 MKGRP                : 71
 MKUSR                : 73
 MOUNT                : 48
-NAME                 : 46 71 72
+NAME                 : 47 71 72
 PASS                 : 69
-PATH                 : 19 28 47
+PATH                 : 19 28 31
 R                    : 88
-RMDISK               : 47
+RMDISK               : 31
 RMGRP                : 72
 RMUSR                : 80
 SIZE                 : 27
-TYPE                 : 42 43
-TYPE_CADENA          : 42
+TYPE                 : 43 44
+TYPE_CADENA          : 43
 UNIDAD_CADENA        : 29
 UNIT                 : 29
 UNMOUNT              : 53
@@ -167,24 +167,24 @@ command_unmount      : 9
 commands             : 2 3
 init                 : 0
 list_commands        : 1 2
-param_add            : 41
+param_add            : 42
 param_cont           : 87
-param_delete         : 39
+param_delete         : 40
 param_file           : 93
-param_fit            : 26 37
+param_fit            : 26 38
 param_fs             : 59
 param_grp            : 78
 param_id             : 57 67
-param_name           : 40 52
+param_name           : 41 52
 param_pass           : 66 77
-param_path           : 24 35 51 84
+param_path           : 24 36 51 84
 param_r              : 85
-param_size           : 23 34 86
-param_type           : 38 58
-param_unit           : 25 36
+param_size           : 23 35 86
+param_type           : 39 58
+param_unit           : 25 37
 param_user           : 65 76
 parameter_cat        : 91 92
-parameter_fdisk      : 32 33
+parameter_fdisk      : 33 34
 parameter_login      : 63 64
 parameter_mkdisk     : 21 22
 parameter_mkfile     : 82 83
@@ -192,7 +192,7 @@ parameter_mkfs       : 55 56
 parameter_mkusr      : 74 75
 parameter_mount      : 49 50
 parameters_cat       : 90 91
-parameters_fdisk     : 31 32
+parameters_fdisk     : 32 33
 parameters_login     : 62 63
 parameters_mkdisk    : 20 21
 parameters_mkfile    : 81 82
@@ -225,8 +225,8 @@ state 0
     (18) commands -> . command_cat
     (19) command_execute -> . EXECUTE GUION PATH IGUAL CADENA
     (20) command_mkdisk -> . MKDISK parameters_mkdisk
-    (47) command_rmdisk -> . RMDISK GUION PATH IGUAL CADENA
-    (31) command_fdisk -> . FDISK parameters_fdisk
+    (31) command_rmdisk -> . RMDISK GUION PATH IGUAL CADENA
+    (32) command_fdisk -> . FDISK parameters_fdisk
     (48) command_mount -> . MOUNT parameters_mount
     (53) command_unmount -> . UNMOUNT GUION ID_UNMOUNT IGUAL CADENA
     (54) command_mkfs -> . MKFS parameters_mkfs
@@ -301,8 +301,8 @@ state 2
     (18) commands -> . command_cat
     (19) command_execute -> . EXECUTE GUION PATH IGUAL CADENA
     (20) command_mkdisk -> . MKDISK parameters_mkdisk
-    (47) command_rmdisk -> . RMDISK GUION PATH IGUAL CADENA
-    (31) command_fdisk -> . FDISK parameters_fdisk
+    (31) command_rmdisk -> . RMDISK GUION PATH IGUAL CADENA
+    (32) command_fdisk -> . FDISK parameters_fdisk
     (48) command_mount -> . MOUNT parameters_mount
     (53) command_unmount -> . UNMOUNT GUION ID_UNMOUNT IGUAL CADENA
     (54) command_mkfs -> . MKFS parameters_mkfs
@@ -733,33 +733,33 @@ state 20
 
 state 21
 
-    (47) command_rmdisk -> RMDISK . GUION PATH IGUAL CADENA
+    (31) command_rmdisk -> RMDISK . GUION PATH IGUAL CADENA
 
     GUION           shift and go to state 43
 
 
 state 22
 
-    (31) command_fdisk -> FDISK . parameters_fdisk
-    (32) parameters_fdisk -> . parameters_fdisk parameter_fdisk
-    (33) parameters_fdisk -> . parameter_fdisk
-    (34) parameter_fdisk -> . param_size
-    (35) parameter_fdisk -> . param_path
-    (36) parameter_fdisk -> . param_unit
-    (37) parameter_fdisk -> . param_fit
-    (38) parameter_fdisk -> . param_type
-    (39) parameter_fdisk -> . param_delete
-    (40) parameter_fdisk -> . param_name
-    (41) parameter_fdisk -> . param_add
+    (32) command_fdisk -> FDISK . parameters_fdisk
+    (33) parameters_fdisk -> . parameters_fdisk parameter_fdisk
+    (34) parameters_fdisk -> . parameter_fdisk
+    (35) parameter_fdisk -> . param_size
+    (36) parameter_fdisk -> . param_path
+    (37) parameter_fdisk -> . param_unit
+    (38) parameter_fdisk -> . param_fit
+    (39) parameter_fdisk -> . param_type
+    (40) parameter_fdisk -> . param_delete
+    (41) parameter_fdisk -> . param_name
+    (42) parameter_fdisk -> . param_add
     (27) param_size -> . GUION SIZE IGUAL ENTERO
     (28) param_path -> . GUION PATH IGUAL CADENA
     (29) param_unit -> . GUION UNIT IGUAL UNIDAD_CADENA
     (30) param_fit -> . GUION FIT IGUAL FIT_CADENA
-    (42) param_type -> . GUION TYPE IGUAL TYPE_CADENA
-    (43) param_type -> . GUION TYPE IGUAL FULL
-    (44) param_delete -> . GUION DELETE IGUAL FULL
-    (46) param_name -> . GUION NAME IGUAL CADENA
-    (45) param_add -> . GUION ADD IGUAL ENTERO
+    (43) param_type -> . GUION TYPE IGUAL TYPE_CADENA
+    (44) param_type -> . GUION TYPE IGUAL FULL
+    (45) param_delete -> . GUION DELETE IGUAL FULL
+    (47) param_name -> . GUION NAME IGUAL CADENA
+    (46) param_add -> . GUION ADD IGUAL ENTERO
 
     GUION           shift and go to state 54
 
@@ -782,7 +782,7 @@ state 23
     (51) parameter_mount -> . param_path
     (52) parameter_mount -> . param_name
     (28) param_path -> . GUION PATH IGUAL CADENA
-    (46) param_name -> . GUION NAME IGUAL CADENA
+    (47) param_name -> . GUION NAME IGUAL CADENA
 
     GUION           shift and go to state 59
 
@@ -807,8 +807,8 @@ state 25
     (58) parameter_mkfs -> . param_type
     (59) parameter_mkfs -> . param_fs
     (60) param_id -> . GUION ID_UNMOUNT IGUAL CADENA
-    (42) param_type -> . GUION TYPE IGUAL TYPE_CADENA
-    (43) param_type -> . GUION TYPE IGUAL FULL
+    (43) param_type -> . GUION TYPE IGUAL TYPE_CADENA
+    (44) param_type -> . GUION TYPE IGUAL FULL
     (61) param_fs -> . GUION FS IGUAL FS_CADENA
 
     GUION           shift and go to state 66
@@ -1135,49 +1135,49 @@ state 42
 
 state 43
 
-    (47) command_rmdisk -> RMDISK GUION . PATH IGUAL CADENA
+    (31) command_rmdisk -> RMDISK GUION . PATH IGUAL CADENA
 
     PATH            shift and go to state 99
 
 
 state 44
 
-    (31) command_fdisk -> FDISK parameters_fdisk .
-    (32) parameters_fdisk -> parameters_fdisk . parameter_fdisk
-    (34) parameter_fdisk -> . param_size
-    (35) parameter_fdisk -> . param_path
-    (36) parameter_fdisk -> . param_unit
-    (37) parameter_fdisk -> . param_fit
-    (38) parameter_fdisk -> . param_type
-    (39) parameter_fdisk -> . param_delete
-    (40) parameter_fdisk -> . param_name
-    (41) parameter_fdisk -> . param_add
+    (32) command_fdisk -> FDISK parameters_fdisk .
+    (33) parameters_fdisk -> parameters_fdisk . parameter_fdisk
+    (35) parameter_fdisk -> . param_size
+    (36) parameter_fdisk -> . param_path
+    (37) parameter_fdisk -> . param_unit
+    (38) parameter_fdisk -> . param_fit
+    (39) parameter_fdisk -> . param_type
+    (40) parameter_fdisk -> . param_delete
+    (41) parameter_fdisk -> . param_name
+    (42) parameter_fdisk -> . param_add
     (27) param_size -> . GUION SIZE IGUAL ENTERO
     (28) param_path -> . GUION PATH IGUAL CADENA
     (29) param_unit -> . GUION UNIT IGUAL UNIDAD_CADENA
     (30) param_fit -> . GUION FIT IGUAL FIT_CADENA
-    (42) param_type -> . GUION TYPE IGUAL TYPE_CADENA
-    (43) param_type -> . GUION TYPE IGUAL FULL
-    (44) param_delete -> . GUION DELETE IGUAL FULL
-    (46) param_name -> . GUION NAME IGUAL CADENA
-    (45) param_add -> . GUION ADD IGUAL ENTERO
+    (43) param_type -> . GUION TYPE IGUAL TYPE_CADENA
+    (44) param_type -> . GUION TYPE IGUAL FULL
+    (45) param_delete -> . GUION DELETE IGUAL FULL
+    (47) param_name -> . GUION NAME IGUAL CADENA
+    (46) param_add -> . GUION ADD IGUAL ENTERO
 
-    EXECUTE         reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    MKDISK          reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    RMDISK          reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    FDISK           reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    MOUNT           reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    UNMOUNT         reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    MKFS            reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    LOGIN           reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    LOGOUT          reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    MKGRP           reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    RMGRP           reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    MKUSR           reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    RMUSR           reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    MKFILE          reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    CAT             reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
-    $end            reduce using rule 31 (command_fdisk -> FDISK parameters_fdisk .)
+    EXECUTE         reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    MKDISK          reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    RMDISK          reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    FDISK           reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    MOUNT           reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    UNMOUNT         reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    MKFS            reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    LOGIN           reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    LOGOUT          reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    MKGRP           reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    RMGRP           reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    MKUSR           reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    RMUSR           reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    MKFILE          reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    CAT             reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
+    $end            reduce using rule 32 (command_fdisk -> FDISK parameters_fdisk .)
     GUION           shift and go to state 54
 
     parameter_fdisk                shift and go to state 100
@@ -1192,209 +1192,209 @@ state 44
 
 state 45
 
-    (33) parameters_fdisk -> parameter_fdisk .
+    (34) parameters_fdisk -> parameter_fdisk .
 
-    GUION           reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    EXECUTE         reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    MKDISK          reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    RMDISK          reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    FDISK           reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    MOUNT           reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    UNMOUNT         reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    MKFS            reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    LOGIN           reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    LOGOUT          reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    MKGRP           reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    RMGRP           reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    MKUSR           reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    RMUSR           reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    MKFILE          reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    CAT             reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
-    $end            reduce using rule 33 (parameters_fdisk -> parameter_fdisk .)
+    GUION           reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    EXECUTE         reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    MKDISK          reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    RMDISK          reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    FDISK           reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    MOUNT           reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    UNMOUNT         reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    MKFS            reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    LOGIN           reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    LOGOUT          reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    MKGRP           reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    RMGRP           reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    MKUSR           reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    RMUSR           reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    MKFILE          reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    CAT             reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
+    $end            reduce using rule 34 (parameters_fdisk -> parameter_fdisk .)
 
 
 state 46
 
-    (34) parameter_fdisk -> param_size .
+    (35) parameter_fdisk -> param_size .
 
-    GUION           reduce using rule 34 (parameter_fdisk -> param_size .)
-    EXECUTE         reduce using rule 34 (parameter_fdisk -> param_size .)
-    MKDISK          reduce using rule 34 (parameter_fdisk -> param_size .)
-    RMDISK          reduce using rule 34 (parameter_fdisk -> param_size .)
-    FDISK           reduce using rule 34 (parameter_fdisk -> param_size .)
-    MOUNT           reduce using rule 34 (parameter_fdisk -> param_size .)
-    UNMOUNT         reduce using rule 34 (parameter_fdisk -> param_size .)
-    MKFS            reduce using rule 34 (parameter_fdisk -> param_size .)
-    LOGIN           reduce using rule 34 (parameter_fdisk -> param_size .)
-    LOGOUT          reduce using rule 34 (parameter_fdisk -> param_size .)
-    MKGRP           reduce using rule 34 (parameter_fdisk -> param_size .)
-    RMGRP           reduce using rule 34 (parameter_fdisk -> param_size .)
-    MKUSR           reduce using rule 34 (parameter_fdisk -> param_size .)
-    RMUSR           reduce using rule 34 (parameter_fdisk -> param_size .)
-    MKFILE          reduce using rule 34 (parameter_fdisk -> param_size .)
-    CAT             reduce using rule 34 (parameter_fdisk -> param_size .)
-    $end            reduce using rule 34 (parameter_fdisk -> param_size .)
+    GUION           reduce using rule 35 (parameter_fdisk -> param_size .)
+    EXECUTE         reduce using rule 35 (parameter_fdisk -> param_size .)
+    MKDISK          reduce using rule 35 (parameter_fdisk -> param_size .)
+    RMDISK          reduce using rule 35 (parameter_fdisk -> param_size .)
+    FDISK           reduce using rule 35 (parameter_fdisk -> param_size .)
+    MOUNT           reduce using rule 35 (parameter_fdisk -> param_size .)
+    UNMOUNT         reduce using rule 35 (parameter_fdisk -> param_size .)
+    MKFS            reduce using rule 35 (parameter_fdisk -> param_size .)
+    LOGIN           reduce using rule 35 (parameter_fdisk -> param_size .)
+    LOGOUT          reduce using rule 35 (parameter_fdisk -> param_size .)
+    MKGRP           reduce using rule 35 (parameter_fdisk -> param_size .)
+    RMGRP           reduce using rule 35 (parameter_fdisk -> param_size .)
+    MKUSR           reduce using rule 35 (parameter_fdisk -> param_size .)
+    RMUSR           reduce using rule 35 (parameter_fdisk -> param_size .)
+    MKFILE          reduce using rule 35 (parameter_fdisk -> param_size .)
+    CAT             reduce using rule 35 (parameter_fdisk -> param_size .)
+    $end            reduce using rule 35 (parameter_fdisk -> param_size .)
 
 
 state 47
 
-    (35) parameter_fdisk -> param_path .
+    (36) parameter_fdisk -> param_path .
 
-    GUION           reduce using rule 35 (parameter_fdisk -> param_path .)
-    EXECUTE         reduce using rule 35 (parameter_fdisk -> param_path .)
-    MKDISK          reduce using rule 35 (parameter_fdisk -> param_path .)
-    RMDISK          reduce using rule 35 (parameter_fdisk -> param_path .)
-    FDISK           reduce using rule 35 (parameter_fdisk -> param_path .)
-    MOUNT           reduce using rule 35 (parameter_fdisk -> param_path .)
-    UNMOUNT         reduce using rule 35 (parameter_fdisk -> param_path .)
-    MKFS            reduce using rule 35 (parameter_fdisk -> param_path .)
-    LOGIN           reduce using rule 35 (parameter_fdisk -> param_path .)
-    LOGOUT          reduce using rule 35 (parameter_fdisk -> param_path .)
-    MKGRP           reduce using rule 35 (parameter_fdisk -> param_path .)
-    RMGRP           reduce using rule 35 (parameter_fdisk -> param_path .)
-    MKUSR           reduce using rule 35 (parameter_fdisk -> param_path .)
-    RMUSR           reduce using rule 35 (parameter_fdisk -> param_path .)
-    MKFILE          reduce using rule 35 (parameter_fdisk -> param_path .)
-    CAT             reduce using rule 35 (parameter_fdisk -> param_path .)
-    $end            reduce using rule 35 (parameter_fdisk -> param_path .)
+    GUION           reduce using rule 36 (parameter_fdisk -> param_path .)
+    EXECUTE         reduce using rule 36 (parameter_fdisk -> param_path .)
+    MKDISK          reduce using rule 36 (parameter_fdisk -> param_path .)
+    RMDISK          reduce using rule 36 (parameter_fdisk -> param_path .)
+    FDISK           reduce using rule 36 (parameter_fdisk -> param_path .)
+    MOUNT           reduce using rule 36 (parameter_fdisk -> param_path .)
+    UNMOUNT         reduce using rule 36 (parameter_fdisk -> param_path .)
+    MKFS            reduce using rule 36 (parameter_fdisk -> param_path .)
+    LOGIN           reduce using rule 36 (parameter_fdisk -> param_path .)
+    LOGOUT          reduce using rule 36 (parameter_fdisk -> param_path .)
+    MKGRP           reduce using rule 36 (parameter_fdisk -> param_path .)
+    RMGRP           reduce using rule 36 (parameter_fdisk -> param_path .)
+    MKUSR           reduce using rule 36 (parameter_fdisk -> param_path .)
+    RMUSR           reduce using rule 36 (parameter_fdisk -> param_path .)
+    MKFILE          reduce using rule 36 (parameter_fdisk -> param_path .)
+    CAT             reduce using rule 36 (parameter_fdisk -> param_path .)
+    $end            reduce using rule 36 (parameter_fdisk -> param_path .)
 
 
 state 48
 
-    (36) parameter_fdisk -> param_unit .
+    (37) parameter_fdisk -> param_unit .
 
-    GUION           reduce using rule 36 (parameter_fdisk -> param_unit .)
-    EXECUTE         reduce using rule 36 (parameter_fdisk -> param_unit .)
-    MKDISK          reduce using rule 36 (parameter_fdisk -> param_unit .)
-    RMDISK          reduce using rule 36 (parameter_fdisk -> param_unit .)
-    FDISK           reduce using rule 36 (parameter_fdisk -> param_unit .)
-    MOUNT           reduce using rule 36 (parameter_fdisk -> param_unit .)
-    UNMOUNT         reduce using rule 36 (parameter_fdisk -> param_unit .)
-    MKFS            reduce using rule 36 (parameter_fdisk -> param_unit .)
-    LOGIN           reduce using rule 36 (parameter_fdisk -> param_unit .)
-    LOGOUT          reduce using rule 36 (parameter_fdisk -> param_unit .)
-    MKGRP           reduce using rule 36 (parameter_fdisk -> param_unit .)
-    RMGRP           reduce using rule 36 (parameter_fdisk -> param_unit .)
-    MKUSR           reduce using rule 36 (parameter_fdisk -> param_unit .)
-    RMUSR           reduce using rule 36 (parameter_fdisk -> param_unit .)
-    MKFILE          reduce using rule 36 (parameter_fdisk -> param_unit .)
-    CAT             reduce using rule 36 (parameter_fdisk -> param_unit .)
-    $end            reduce using rule 36 (parameter_fdisk -> param_unit .)
+    GUION           reduce using rule 37 (parameter_fdisk -> param_unit .)
+    EXECUTE         reduce using rule 37 (parameter_fdisk -> param_unit .)
+    MKDISK          reduce using rule 37 (parameter_fdisk -> param_unit .)
+    RMDISK          reduce using rule 37 (parameter_fdisk -> param_unit .)
+    FDISK           reduce using rule 37 (parameter_fdisk -> param_unit .)
+    MOUNT           reduce using rule 37 (parameter_fdisk -> param_unit .)
+    UNMOUNT         reduce using rule 37 (parameter_fdisk -> param_unit .)
+    MKFS            reduce using rule 37 (parameter_fdisk -> param_unit .)
+    LOGIN           reduce using rule 37 (parameter_fdisk -> param_unit .)
+    LOGOUT          reduce using rule 37 (parameter_fdisk -> param_unit .)
+    MKGRP           reduce using rule 37 (parameter_fdisk -> param_unit .)
+    RMGRP           reduce using rule 37 (parameter_fdisk -> param_unit .)
+    MKUSR           reduce using rule 37 (parameter_fdisk -> param_unit .)
+    RMUSR           reduce using rule 37 (parameter_fdisk -> param_unit .)
+    MKFILE          reduce using rule 37 (parameter_fdisk -> param_unit .)
+    CAT             reduce using rule 37 (parameter_fdisk -> param_unit .)
+    $end            reduce using rule 37 (parameter_fdisk -> param_unit .)
 
 
 state 49
 
-    (37) parameter_fdisk -> param_fit .
+    (38) parameter_fdisk -> param_fit .
 
-    GUION           reduce using rule 37 (parameter_fdisk -> param_fit .)
-    EXECUTE         reduce using rule 37 (parameter_fdisk -> param_fit .)
-    MKDISK          reduce using rule 37 (parameter_fdisk -> param_fit .)
-    RMDISK          reduce using rule 37 (parameter_fdisk -> param_fit .)
-    FDISK           reduce using rule 37 (parameter_fdisk -> param_fit .)
-    MOUNT           reduce using rule 37 (parameter_fdisk -> param_fit .)
-    UNMOUNT         reduce using rule 37 (parameter_fdisk -> param_fit .)
-    MKFS            reduce using rule 37 (parameter_fdisk -> param_fit .)
-    LOGIN           reduce using rule 37 (parameter_fdisk -> param_fit .)
-    LOGOUT          reduce using rule 37 (parameter_fdisk -> param_fit .)
-    MKGRP           reduce using rule 37 (parameter_fdisk -> param_fit .)
-    RMGRP           reduce using rule 37 (parameter_fdisk -> param_fit .)
-    MKUSR           reduce using rule 37 (parameter_fdisk -> param_fit .)
-    RMUSR           reduce using rule 37 (parameter_fdisk -> param_fit .)
-    MKFILE          reduce using rule 37 (parameter_fdisk -> param_fit .)
-    CAT             reduce using rule 37 (parameter_fdisk -> param_fit .)
-    $end            reduce using rule 37 (parameter_fdisk -> param_fit .)
+    GUION           reduce using rule 38 (parameter_fdisk -> param_fit .)
+    EXECUTE         reduce using rule 38 (parameter_fdisk -> param_fit .)
+    MKDISK          reduce using rule 38 (parameter_fdisk -> param_fit .)
+    RMDISK          reduce using rule 38 (parameter_fdisk -> param_fit .)
+    FDISK           reduce using rule 38 (parameter_fdisk -> param_fit .)
+    MOUNT           reduce using rule 38 (parameter_fdisk -> param_fit .)
+    UNMOUNT         reduce using rule 38 (parameter_fdisk -> param_fit .)
+    MKFS            reduce using rule 38 (parameter_fdisk -> param_fit .)
+    LOGIN           reduce using rule 38 (parameter_fdisk -> param_fit .)
+    LOGOUT          reduce using rule 38 (parameter_fdisk -> param_fit .)
+    MKGRP           reduce using rule 38 (parameter_fdisk -> param_fit .)
+    RMGRP           reduce using rule 38 (parameter_fdisk -> param_fit .)
+    MKUSR           reduce using rule 38 (parameter_fdisk -> param_fit .)
+    RMUSR           reduce using rule 38 (parameter_fdisk -> param_fit .)
+    MKFILE          reduce using rule 38 (parameter_fdisk -> param_fit .)
+    CAT             reduce using rule 38 (parameter_fdisk -> param_fit .)
+    $end            reduce using rule 38 (parameter_fdisk -> param_fit .)
 
 
 state 50
 
-    (38) parameter_fdisk -> param_type .
+    (39) parameter_fdisk -> param_type .
 
-    GUION           reduce using rule 38 (parameter_fdisk -> param_type .)
-    EXECUTE         reduce using rule 38 (parameter_fdisk -> param_type .)
-    MKDISK          reduce using rule 38 (parameter_fdisk -> param_type .)
-    RMDISK          reduce using rule 38 (parameter_fdisk -> param_type .)
-    FDISK           reduce using rule 38 (parameter_fdisk -> param_type .)
-    MOUNT           reduce using rule 38 (parameter_fdisk -> param_type .)
-    UNMOUNT         reduce using rule 38 (parameter_fdisk -> param_type .)
-    MKFS            reduce using rule 38 (parameter_fdisk -> param_type .)
-    LOGIN           reduce using rule 38 (parameter_fdisk -> param_type .)
-    LOGOUT          reduce using rule 38 (parameter_fdisk -> param_type .)
-    MKGRP           reduce using rule 38 (parameter_fdisk -> param_type .)
-    RMGRP           reduce using rule 38 (parameter_fdisk -> param_type .)
-    MKUSR           reduce using rule 38 (parameter_fdisk -> param_type .)
-    RMUSR           reduce using rule 38 (parameter_fdisk -> param_type .)
-    MKFILE          reduce using rule 38 (parameter_fdisk -> param_type .)
-    CAT             reduce using rule 38 (parameter_fdisk -> param_type .)
-    $end            reduce using rule 38 (parameter_fdisk -> param_type .)
+    GUION           reduce using rule 39 (parameter_fdisk -> param_type .)
+    EXECUTE         reduce using rule 39 (parameter_fdisk -> param_type .)
+    MKDISK          reduce using rule 39 (parameter_fdisk -> param_type .)
+    RMDISK          reduce using rule 39 (parameter_fdisk -> param_type .)
+    FDISK           reduce using rule 39 (parameter_fdisk -> param_type .)
+    MOUNT           reduce using rule 39 (parameter_fdisk -> param_type .)
+    UNMOUNT         reduce using rule 39 (parameter_fdisk -> param_type .)
+    MKFS            reduce using rule 39 (parameter_fdisk -> param_type .)
+    LOGIN           reduce using rule 39 (parameter_fdisk -> param_type .)
+    LOGOUT          reduce using rule 39 (parameter_fdisk -> param_type .)
+    MKGRP           reduce using rule 39 (parameter_fdisk -> param_type .)
+    RMGRP           reduce using rule 39 (parameter_fdisk -> param_type .)
+    MKUSR           reduce using rule 39 (parameter_fdisk -> param_type .)
+    RMUSR           reduce using rule 39 (parameter_fdisk -> param_type .)
+    MKFILE          reduce using rule 39 (parameter_fdisk -> param_type .)
+    CAT             reduce using rule 39 (parameter_fdisk -> param_type .)
+    $end            reduce using rule 39 (parameter_fdisk -> param_type .)
 
 
 state 51
 
-    (39) parameter_fdisk -> param_delete .
+    (40) parameter_fdisk -> param_delete .
 
-    GUION           reduce using rule 39 (parameter_fdisk -> param_delete .)
-    EXECUTE         reduce using rule 39 (parameter_fdisk -> param_delete .)
-    MKDISK          reduce using rule 39 (parameter_fdisk -> param_delete .)
-    RMDISK          reduce using rule 39 (parameter_fdisk -> param_delete .)
-    FDISK           reduce using rule 39 (parameter_fdisk -> param_delete .)
-    MOUNT           reduce using rule 39 (parameter_fdisk -> param_delete .)
-    UNMOUNT         reduce using rule 39 (parameter_fdisk -> param_delete .)
-    MKFS            reduce using rule 39 (parameter_fdisk -> param_delete .)
-    LOGIN           reduce using rule 39 (parameter_fdisk -> param_delete .)
-    LOGOUT          reduce using rule 39 (parameter_fdisk -> param_delete .)
-    MKGRP           reduce using rule 39 (parameter_fdisk -> param_delete .)
-    RMGRP           reduce using rule 39 (parameter_fdisk -> param_delete .)
-    MKUSR           reduce using rule 39 (parameter_fdisk -> param_delete .)
-    RMUSR           reduce using rule 39 (parameter_fdisk -> param_delete .)
-    MKFILE          reduce using rule 39 (parameter_fdisk -> param_delete .)
-    CAT             reduce using rule 39 (parameter_fdisk -> param_delete .)
-    $end            reduce using rule 39 (parameter_fdisk -> param_delete .)
+    GUION           reduce using rule 40 (parameter_fdisk -> param_delete .)
+    EXECUTE         reduce using rule 40 (parameter_fdisk -> param_delete .)
+    MKDISK          reduce using rule 40 (parameter_fdisk -> param_delete .)
+    RMDISK          reduce using rule 40 (parameter_fdisk -> param_delete .)
+    FDISK           reduce using rule 40 (parameter_fdisk -> param_delete .)
+    MOUNT           reduce using rule 40 (parameter_fdisk -> param_delete .)
+    UNMOUNT         reduce using rule 40 (parameter_fdisk -> param_delete .)
+    MKFS            reduce using rule 40 (parameter_fdisk -> param_delete .)
+    LOGIN           reduce using rule 40 (parameter_fdisk -> param_delete .)
+    LOGOUT          reduce using rule 40 (parameter_fdisk -> param_delete .)
+    MKGRP           reduce using rule 40 (parameter_fdisk -> param_delete .)
+    RMGRP           reduce using rule 40 (parameter_fdisk -> param_delete .)
+    MKUSR           reduce using rule 40 (parameter_fdisk -> param_delete .)
+    RMUSR           reduce using rule 40 (parameter_fdisk -> param_delete .)
+    MKFILE          reduce using rule 40 (parameter_fdisk -> param_delete .)
+    CAT             reduce using rule 40 (parameter_fdisk -> param_delete .)
+    $end            reduce using rule 40 (parameter_fdisk -> param_delete .)
 
 
 state 52
 
-    (40) parameter_fdisk -> param_name .
+    (41) parameter_fdisk -> param_name .
 
-    GUION           reduce using rule 40 (parameter_fdisk -> param_name .)
-    EXECUTE         reduce using rule 40 (parameter_fdisk -> param_name .)
-    MKDISK          reduce using rule 40 (parameter_fdisk -> param_name .)
-    RMDISK          reduce using rule 40 (parameter_fdisk -> param_name .)
-    FDISK           reduce using rule 40 (parameter_fdisk -> param_name .)
-    MOUNT           reduce using rule 40 (parameter_fdisk -> param_name .)
-    UNMOUNT         reduce using rule 40 (parameter_fdisk -> param_name .)
-    MKFS            reduce using rule 40 (parameter_fdisk -> param_name .)
-    LOGIN           reduce using rule 40 (parameter_fdisk -> param_name .)
-    LOGOUT          reduce using rule 40 (parameter_fdisk -> param_name .)
-    MKGRP           reduce using rule 40 (parameter_fdisk -> param_name .)
-    RMGRP           reduce using rule 40 (parameter_fdisk -> param_name .)
-    MKUSR           reduce using rule 40 (parameter_fdisk -> param_name .)
-    RMUSR           reduce using rule 40 (parameter_fdisk -> param_name .)
-    MKFILE          reduce using rule 40 (parameter_fdisk -> param_name .)
-    CAT             reduce using rule 40 (parameter_fdisk -> param_name .)
-    $end            reduce using rule 40 (parameter_fdisk -> param_name .)
+    GUION           reduce using rule 41 (parameter_fdisk -> param_name .)
+    EXECUTE         reduce using rule 41 (parameter_fdisk -> param_name .)
+    MKDISK          reduce using rule 41 (parameter_fdisk -> param_name .)
+    RMDISK          reduce using rule 41 (parameter_fdisk -> param_name .)
+    FDISK           reduce using rule 41 (parameter_fdisk -> param_name .)
+    MOUNT           reduce using rule 41 (parameter_fdisk -> param_name .)
+    UNMOUNT         reduce using rule 41 (parameter_fdisk -> param_name .)
+    MKFS            reduce using rule 41 (parameter_fdisk -> param_name .)
+    LOGIN           reduce using rule 41 (parameter_fdisk -> param_name .)
+    LOGOUT          reduce using rule 41 (parameter_fdisk -> param_name .)
+    MKGRP           reduce using rule 41 (parameter_fdisk -> param_name .)
+    RMGRP           reduce using rule 41 (parameter_fdisk -> param_name .)
+    MKUSR           reduce using rule 41 (parameter_fdisk -> param_name .)
+    RMUSR           reduce using rule 41 (parameter_fdisk -> param_name .)
+    MKFILE          reduce using rule 41 (parameter_fdisk -> param_name .)
+    CAT             reduce using rule 41 (parameter_fdisk -> param_name .)
+    $end            reduce using rule 41 (parameter_fdisk -> param_name .)
 
 
 state 53
 
-    (41) parameter_fdisk -> param_add .
+    (42) parameter_fdisk -> param_add .
 
-    GUION           reduce using rule 41 (parameter_fdisk -> param_add .)
-    EXECUTE         reduce using rule 41 (parameter_fdisk -> param_add .)
-    MKDISK          reduce using rule 41 (parameter_fdisk -> param_add .)
-    RMDISK          reduce using rule 41 (parameter_fdisk -> param_add .)
-    FDISK           reduce using rule 41 (parameter_fdisk -> param_add .)
-    MOUNT           reduce using rule 41 (parameter_fdisk -> param_add .)
-    UNMOUNT         reduce using rule 41 (parameter_fdisk -> param_add .)
-    MKFS            reduce using rule 41 (parameter_fdisk -> param_add .)
-    LOGIN           reduce using rule 41 (parameter_fdisk -> param_add .)
-    LOGOUT          reduce using rule 41 (parameter_fdisk -> param_add .)
-    MKGRP           reduce using rule 41 (parameter_fdisk -> param_add .)
-    RMGRP           reduce using rule 41 (parameter_fdisk -> param_add .)
-    MKUSR           reduce using rule 41 (parameter_fdisk -> param_add .)
-    RMUSR           reduce using rule 41 (parameter_fdisk -> param_add .)
-    MKFILE          reduce using rule 41 (parameter_fdisk -> param_add .)
-    CAT             reduce using rule 41 (parameter_fdisk -> param_add .)
-    $end            reduce using rule 41 (parameter_fdisk -> param_add .)
+    GUION           reduce using rule 42 (parameter_fdisk -> param_add .)
+    EXECUTE         reduce using rule 42 (parameter_fdisk -> param_add .)
+    MKDISK          reduce using rule 42 (parameter_fdisk -> param_add .)
+    RMDISK          reduce using rule 42 (parameter_fdisk -> param_add .)
+    FDISK           reduce using rule 42 (parameter_fdisk -> param_add .)
+    MOUNT           reduce using rule 42 (parameter_fdisk -> param_add .)
+    UNMOUNT         reduce using rule 42 (parameter_fdisk -> param_add .)
+    MKFS            reduce using rule 42 (parameter_fdisk -> param_add .)
+    LOGIN           reduce using rule 42 (parameter_fdisk -> param_add .)
+    LOGOUT          reduce using rule 42 (parameter_fdisk -> param_add .)
+    MKGRP           reduce using rule 42 (parameter_fdisk -> param_add .)
+    RMGRP           reduce using rule 42 (parameter_fdisk -> param_add .)
+    MKUSR           reduce using rule 42 (parameter_fdisk -> param_add .)
+    RMUSR           reduce using rule 42 (parameter_fdisk -> param_add .)
+    MKFILE          reduce using rule 42 (parameter_fdisk -> param_add .)
+    CAT             reduce using rule 42 (parameter_fdisk -> param_add .)
+    $end            reduce using rule 42 (parameter_fdisk -> param_add .)
 
 
 state 54
@@ -1403,11 +1403,11 @@ state 54
     (28) param_path -> GUION . PATH IGUAL CADENA
     (29) param_unit -> GUION . UNIT IGUAL UNIDAD_CADENA
     (30) param_fit -> GUION . FIT IGUAL FIT_CADENA
-    (42) param_type -> GUION . TYPE IGUAL TYPE_CADENA
-    (43) param_type -> GUION . TYPE IGUAL FULL
-    (44) param_delete -> GUION . DELETE IGUAL FULL
-    (46) param_name -> GUION . NAME IGUAL CADENA
-    (45) param_add -> GUION . ADD IGUAL ENTERO
+    (43) param_type -> GUION . TYPE IGUAL TYPE_CADENA
+    (44) param_type -> GUION . TYPE IGUAL FULL
+    (45) param_delete -> GUION . DELETE IGUAL FULL
+    (47) param_name -> GUION . NAME IGUAL CADENA
+    (46) param_add -> GUION . ADD IGUAL ENTERO
 
     SIZE            shift and go to state 95
     PATH            shift and go to state 96
@@ -1426,7 +1426,7 @@ state 55
     (51) parameter_mount -> . param_path
     (52) parameter_mount -> . param_name
     (28) param_path -> . GUION PATH IGUAL CADENA
-    (46) param_name -> . GUION NAME IGUAL CADENA
+    (47) param_name -> . GUION NAME IGUAL CADENA
 
     EXECUTE         reduce using rule 48 (command_mount -> MOUNT parameters_mount .)
     MKDISK          reduce using rule 48 (command_mount -> MOUNT parameters_mount .)
@@ -1522,7 +1522,7 @@ state 58
 state 59
 
     (28) param_path -> GUION . PATH IGUAL CADENA
-    (46) param_name -> GUION . NAME IGUAL CADENA
+    (47) param_name -> GUION . NAME IGUAL CADENA
 
     PATH            shift and go to state 96
     NAME            shift and go to state 103
@@ -1543,8 +1543,8 @@ state 61
     (58) parameter_mkfs -> . param_type
     (59) parameter_mkfs -> . param_fs
     (60) param_id -> . GUION ID_UNMOUNT IGUAL CADENA
-    (42) param_type -> . GUION TYPE IGUAL TYPE_CADENA
-    (43) param_type -> . GUION TYPE IGUAL FULL
+    (43) param_type -> . GUION TYPE IGUAL TYPE_CADENA
+    (44) param_type -> . GUION TYPE IGUAL FULL
     (61) param_fs -> . GUION FS IGUAL FS_CADENA
 
     EXECUTE         reduce using rule 54 (command_mkfs -> MKFS parameters_mkfs .)
@@ -1665,8 +1665,8 @@ state 65
 state 66
 
     (60) param_id -> GUION . ID_UNMOUNT IGUAL CADENA
-    (42) param_type -> GUION . TYPE IGUAL TYPE_CADENA
-    (43) param_type -> GUION . TYPE IGUAL FULL
+    (43) param_type -> GUION . TYPE IGUAL TYPE_CADENA
+    (44) param_type -> GUION . TYPE IGUAL FULL
     (61) param_fs -> GUION . FS IGUAL FS_CADENA
 
     ID_UNMOUNT      shift and go to state 108
@@ -2275,59 +2275,59 @@ state 98
 
 state 99
 
-    (47) command_rmdisk -> RMDISK GUION PATH . IGUAL CADENA
+    (31) command_rmdisk -> RMDISK GUION PATH . IGUAL CADENA
 
     IGUAL           shift and go to state 128
 
 
 state 100
 
-    (32) parameters_fdisk -> parameters_fdisk parameter_fdisk .
+    (33) parameters_fdisk -> parameters_fdisk parameter_fdisk .
 
-    GUION           reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    EXECUTE         reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    MKDISK          reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    RMDISK          reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    FDISK           reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    MOUNT           reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    UNMOUNT         reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    MKFS            reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    LOGIN           reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    LOGOUT          reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    MKGRP           reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    RMGRP           reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    MKUSR           reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    RMUSR           reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    MKFILE          reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    CAT             reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
-    $end            reduce using rule 32 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    GUION           reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    EXECUTE         reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    MKDISK          reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    RMDISK          reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    FDISK           reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    MOUNT           reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    UNMOUNT         reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    MKFS            reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    LOGIN           reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    LOGOUT          reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    MKGRP           reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    RMGRP           reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    MKUSR           reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    RMUSR           reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    MKFILE          reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    CAT             reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
+    $end            reduce using rule 33 (parameters_fdisk -> parameters_fdisk parameter_fdisk .)
 
 
 state 101
 
-    (42) param_type -> GUION TYPE . IGUAL TYPE_CADENA
-    (43) param_type -> GUION TYPE . IGUAL FULL
+    (43) param_type -> GUION TYPE . IGUAL TYPE_CADENA
+    (44) param_type -> GUION TYPE . IGUAL FULL
 
     IGUAL           shift and go to state 129
 
 
 state 102
 
-    (44) param_delete -> GUION DELETE . IGUAL FULL
+    (45) param_delete -> GUION DELETE . IGUAL FULL
 
     IGUAL           shift and go to state 130
 
 
 state 103
 
-    (46) param_name -> GUION NAME . IGUAL CADENA
+    (47) param_name -> GUION NAME . IGUAL CADENA
 
     IGUAL           shift and go to state 131
 
 
 state 104
 
-    (45) param_add -> GUION ADD . IGUAL ENTERO
+    (46) param_add -> GUION ADD . IGUAL ENTERO
 
     IGUAL           shift and go to state 132
 
@@ -2607,15 +2607,15 @@ state 127
 
 state 128
 
-    (47) command_rmdisk -> RMDISK GUION PATH IGUAL . CADENA
+    (31) command_rmdisk -> RMDISK GUION PATH IGUAL . CADENA
 
     CADENA          shift and go to state 149
 
 
 state 129
 
-    (42) param_type -> GUION TYPE IGUAL . TYPE_CADENA
-    (43) param_type -> GUION TYPE IGUAL . FULL
+    (43) param_type -> GUION TYPE IGUAL . TYPE_CADENA
+    (44) param_type -> GUION TYPE IGUAL . FULL
 
     TYPE_CADENA     shift and go to state 150
     FULL            shift and go to state 151
@@ -2623,21 +2623,21 @@ state 129
 
 state 130
 
-    (44) param_delete -> GUION DELETE IGUAL . FULL
+    (45) param_delete -> GUION DELETE IGUAL . FULL
 
     FULL            shift and go to state 152
 
 
 state 131
 
-    (46) param_name -> GUION NAME IGUAL . CADENA
+    (47) param_name -> GUION NAME IGUAL . CADENA
 
     CADENA          shift and go to state 153
 
 
 state 132
 
-    (45) param_add -> GUION ADD IGUAL . ENTERO
+    (46) param_add -> GUION ADD IGUAL . ENTERO
 
     ENTERO          shift and go to state 154
 
@@ -2835,139 +2835,139 @@ state 148
 
 state 149
 
-    (47) command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .
+    (31) command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .
 
-    EXECUTE         reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    MKDISK          reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    RMDISK          reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    FDISK           reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    MOUNT           reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    UNMOUNT         reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    MKFS            reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    LOGIN           reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    LOGOUT          reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    MKGRP           reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    RMGRP           reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    MKUSR           reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    RMUSR           reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    MKFILE          reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    CAT             reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
-    $end            reduce using rule 47 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    EXECUTE         reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    MKDISK          reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    RMDISK          reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    FDISK           reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    MOUNT           reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    UNMOUNT         reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    MKFS            reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    LOGIN           reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    LOGOUT          reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    MKGRP           reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    RMGRP           reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    MKUSR           reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    RMUSR           reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    MKFILE          reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    CAT             reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
+    $end            reduce using rule 31 (command_rmdisk -> RMDISK GUION PATH IGUAL CADENA .)
 
 
 state 150
 
-    (42) param_type -> GUION TYPE IGUAL TYPE_CADENA .
+    (43) param_type -> GUION TYPE IGUAL TYPE_CADENA .
 
-    GUION           reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    EXECUTE         reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    MKDISK          reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    RMDISK          reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    FDISK           reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    MOUNT           reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    UNMOUNT         reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    MKFS            reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    LOGIN           reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    LOGOUT          reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    MKGRP           reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    RMGRP           reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    MKUSR           reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    RMUSR           reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    MKFILE          reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    CAT             reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
-    $end            reduce using rule 42 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    GUION           reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    EXECUTE         reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    MKDISK          reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    RMDISK          reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    FDISK           reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    MOUNT           reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    UNMOUNT         reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    MKFS            reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    LOGIN           reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    LOGOUT          reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    MKGRP           reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    RMGRP           reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    MKUSR           reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    RMUSR           reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    MKFILE          reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    CAT             reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
+    $end            reduce using rule 43 (param_type -> GUION TYPE IGUAL TYPE_CADENA .)
 
 
 state 151
 
-    (43) param_type -> GUION TYPE IGUAL FULL .
+    (44) param_type -> GUION TYPE IGUAL FULL .
 
-    GUION           reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    EXECUTE         reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    MKDISK          reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    RMDISK          reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    FDISK           reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    MOUNT           reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    UNMOUNT         reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    MKFS            reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    LOGIN           reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    LOGOUT          reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    MKGRP           reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    RMGRP           reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    MKUSR           reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    RMUSR           reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    MKFILE          reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    CAT             reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
-    $end            reduce using rule 43 (param_type -> GUION TYPE IGUAL FULL .)
+    GUION           reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    EXECUTE         reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    MKDISK          reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    RMDISK          reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    FDISK           reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    MOUNT           reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    UNMOUNT         reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    MKFS            reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    LOGIN           reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    LOGOUT          reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    MKGRP           reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    RMGRP           reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    MKUSR           reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    RMUSR           reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    MKFILE          reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    CAT             reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
+    $end            reduce using rule 44 (param_type -> GUION TYPE IGUAL FULL .)
 
 
 state 152
 
-    (44) param_delete -> GUION DELETE IGUAL FULL .
+    (45) param_delete -> GUION DELETE IGUAL FULL .
 
-    GUION           reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    EXECUTE         reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    MKDISK          reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    RMDISK          reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    FDISK           reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    MOUNT           reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    UNMOUNT         reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    MKFS            reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    LOGIN           reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    LOGOUT          reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    MKGRP           reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    RMGRP           reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    MKUSR           reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    RMUSR           reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    MKFILE          reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    CAT             reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
-    $end            reduce using rule 44 (param_delete -> GUION DELETE IGUAL FULL .)
+    GUION           reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    EXECUTE         reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    MKDISK          reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    RMDISK          reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    FDISK           reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    MOUNT           reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    UNMOUNT         reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    MKFS            reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    LOGIN           reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    LOGOUT          reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    MKGRP           reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    RMGRP           reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    MKUSR           reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    RMUSR           reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    MKFILE          reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    CAT             reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
+    $end            reduce using rule 45 (param_delete -> GUION DELETE IGUAL FULL .)
 
 
 state 153
 
-    (46) param_name -> GUION NAME IGUAL CADENA .
+    (47) param_name -> GUION NAME IGUAL CADENA .
 
-    GUION           reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    EXECUTE         reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    MKDISK          reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    RMDISK          reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    FDISK           reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    MOUNT           reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    UNMOUNT         reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    MKFS            reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    LOGIN           reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    LOGOUT          reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    MKGRP           reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    RMGRP           reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    MKUSR           reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    RMUSR           reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    MKFILE          reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    CAT             reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
-    $end            reduce using rule 46 (param_name -> GUION NAME IGUAL CADENA .)
+    GUION           reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    EXECUTE         reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    MKDISK          reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    RMDISK          reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    FDISK           reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    MOUNT           reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    UNMOUNT         reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    MKFS            reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    LOGIN           reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    LOGOUT          reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    MKGRP           reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    RMGRP           reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    MKUSR           reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    RMUSR           reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    MKFILE          reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    CAT             reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
+    $end            reduce using rule 47 (param_name -> GUION NAME IGUAL CADENA .)
 
 
 state 154
 
-    (45) param_add -> GUION ADD IGUAL ENTERO .
+    (46) param_add -> GUION ADD IGUAL ENTERO .
 
-    GUION           reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    EXECUTE         reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    MKDISK          reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    RMDISK          reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    FDISK           reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    MOUNT           reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    UNMOUNT         reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    MKFS            reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    LOGIN           reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    LOGOUT          reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    MKGRP           reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    RMGRP           reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    MKUSR           reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    RMUSR           reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    MKFILE          reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    CAT             reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
-    $end            reduce using rule 45 (param_add -> GUION ADD IGUAL ENTERO .)
+    GUION           reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    EXECUTE         reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    MKDISK          reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    RMDISK          reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    FDISK           reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    MOUNT           reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    UNMOUNT         reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    MKFS            reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    LOGIN           reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    LOGOUT          reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    MKGRP           reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    RMGRP           reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    MKUSR           reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    RMUSR           reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    MKFILE          reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    CAT             reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
+    $end            reduce using rule 46 (param_add -> GUION ADD IGUAL ENTERO .)
 
 
 state 155

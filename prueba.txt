@@ -1,5 +1,5 @@
-mkdisk -size=300 -path="/home/Disco1.dsk" -unit=M -fit=BF
-rmdisk -path="/home/Disco1.dsk"
+mkdisk -size=5 -path="./home/Disco1.dsk" -unit=M -fit=BF
+rmdisk -path="./home/Disco1.dsk"
 fdisk -size=300 -path="/home/Disco1.dsk" -name="Particion1"
 mount -path="/home/Disco1.dsk" -name="Part1"
 unmount -id="061XXX"

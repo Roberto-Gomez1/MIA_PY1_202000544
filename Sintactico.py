@@ -58,7 +58,7 @@ def p_command_mkdisk(t):
 
     var_unit = var_unit if var_unit != None else 'M'
     var_fit = var_fit if var_fit != None else 'FF'
-    print(var_size, var_path, var_unit, var_fit)
+    Disk.command_mkdisk(var_size, var_path, var_unit, var_fit)
     t[0] = t[1]
     
 def p_parameters_mkdisk(t):
@@ -92,6 +92,11 @@ def p_param_fit(t):
     'param_fit : GUION FIT IGUAL FIT_CADENA'
     t[0] = {'fitcad' : t[4] }
 
+def p_command_rmdisk(t):
+    '''command_rmdisk : RMDISK GUION PATH IGUAL CADENA'''
+    Disk.command_rmdisk(t[5])
+    t[0] = t[1]
+
 def p_command_fdisk(t):
     '''command_fdisk : FDISK parameters_fdisk'''
     var_size, var_path, var_unit, var_fit,var_type,var_delete,var_add,var_name = None, None, None, None, None, None, None, None
@@ -114,9 +119,15 @@ def p_command_fdisk(t):
             var_name = dict['name']
 
     var_unit = var_unit if var_unit != None else 'K'
-    var_fit = var_fit if var_fit != None else 'WF'
     var_type = var_type if var_type != None else 'P'
-    print(var_size, var_path, var_unit, var_fit,var_type,var_delete,var_add,var_name)
+    var_fit = var_fit if var_fit != None else 'WF'
+    if (var_delete == None & var_add == None):
+        print(var_size, var_path, var_unit, var_fit,var_type,var_delete,var_add,var_name)
+        #Disk.command_fdisk(var_size, var_path, var_unit, var_fit,var_type,var_delete,var_add,var_name)
+    elif (var_delete is not None and var_add is None):
+        print("delete")
+    elif (var_delete is None and var_add is not None):
+        print("add")
     t[0] = t[1]
 
 def p_parameters_fdisk(t):
@@ -154,10 +165,6 @@ def p_param_add(t):
 def p_param_name(t):
     'param_name : GUION NAME IGUAL CADENA'
     t[0] = {'name' : t[4] }
-
-def p_command_rmdisk(t):
-    '''command_rmdisk : RMDISK GUION PATH IGUAL CADENA'''
-    t[0] = t[1]
 
 def p_command_mount(t):
     '''command_mount : MOUNT parameters_mount'''
