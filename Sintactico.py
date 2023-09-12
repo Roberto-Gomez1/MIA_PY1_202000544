@@ -1,14 +1,15 @@
 import ply.yacc as yacc
 from lexer import *
 from Comands.command import *
+import Comands.mount as mount
 
+mountInstance = mount.Mount()
 precedence = ()
 
 
 def p_init(t):
     'init : list_commands'
     t[0] = t[1]
-
 
 # gramatica
 def p_list_commands(t):
@@ -58,7 +59,10 @@ def p_command_mkdisk(t):
 
     var_unit = var_unit if var_unit != None else 'M'
     var_fit = var_fit if var_fit != None else 'FF'
-    Disk.command_mkdisk(var_size, var_path, var_unit, var_fit)
+    if(var_size is None or var_path is None):
+        print("Error: Falta un parametro obligatorio")
+    else:
+        Disk.command_mkdisk(var_size, var_path, var_unit, var_fit)
     t[0] = t[1]
     
 def p_parameters_mkdisk(t):
@@ -94,7 +98,10 @@ def p_param_fit(t):
 
 def p_command_rmdisk(t):
     '''command_rmdisk : RMDISK GUION PATH IGUAL CADENA'''
-    Disk.command_rmdisk(t[5])
+    if(t[5] is None):
+        print("Error: Falta un parametro obligatorio")
+    else:
+        Disk.command_rmdisk(t[5])
     t[0] = t[1]
 
 def p_command_fdisk(t):
@@ -121,13 +128,20 @@ def p_command_fdisk(t):
     var_unit = var_unit if var_unit != None else 'K'
     var_type = var_type if var_type != None else 'P'
     var_fit = var_fit if var_fit != None else 'WF'
-    if (var_delete == None & var_add == None):
-        print(var_size, var_path, var_unit, var_fit,var_type,var_delete,var_add,var_name)
-        #Disk.command_fdisk(var_size, var_path, var_unit, var_fit,var_type,var_delete,var_add,var_name)
-    elif (var_delete is not None and var_add is None):
-        print("delete")
-    elif (var_delete is None and var_add is not None):
-        print("add")
+    if(var_size is None or var_path is None or var_name is None):
+        print("Error: Falta un parametro obligatorio")
+    else:
+        if (var_delete is None and var_add is None):
+            #Disk.command_fdisk(var_size, var_path, var_unit, var_fit,var_type,var_name)
+            Disk.command_fdisk2(var_size, var_path, var_unit, var_fit,var_type,var_name)
+            #Disk.imp(var_path)
+        elif (var_delete is not None and var_add is None):
+            if (var_delete.lower() == 'full'):
+                Disk.command_fdisk_delete(var_path, var_name)
+            else:
+                print("Comando no aceptado para delete")
+        elif (var_delete is None and var_add is not None):
+            Disk.command_fdisk_add(var_path, var_name,var_unit,var_size, var_add)
     t[0] = t[1]
 
 def p_parameters_fdisk(t):
@@ -174,7 +188,10 @@ def p_command_mount(t):
             var_path = dict['path']
         elif 'name' in dict:
             var_name = dict['name']
-    print(var_path, var_name)
+    if(var_path is None or var_name is None):
+        print("Error: Falta un parametro obligatorio")
+    else:
+        mountInstance.mount(var_path, var_name)
     t[0] = t[1]
 
 def p_parameters_mount(t):
@@ -192,7 +209,10 @@ def p_parameter_mount(t):
 
 def p_command_unmount(t):
     '''command_unmount : UNMOUNT GUION ID_UNMOUNT IGUAL CADENA'''
-    print(t[5])
+    if(t[5] is None):
+        print("Error: Falta un parametro obligatorio")
+    else:
+        mountInstance.unmount(t[5])
     t[0] = t[1]
 
 def p_command_mkfs(t):

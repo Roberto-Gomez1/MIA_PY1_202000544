@@ -1,14 +1,16 @@
-mkdisk -size=5 -path="./home/Disco1.dsk" -unit=M -fit=BF
-rmdisk -path="./home/Disco1.dsk"
-fdisk -size=300 -path="/home/Disco1.dsk" -name="Particion1"
-mount -path="/home/Disco1.dsk" -name="Part1"
-unmount -id="061XXX"
-mkfs -type=full -id="061Disco1" -fs=3fs
-login -user="mi usuario" -pass="mi pwd" -id="061Disco1"
-logout
-mkgrp -name="usuarios"
-rmgrp -name="usuarios"
-mkusr -user="user1" -pass="usuario" -grp="usuarios"
-rmusr -user="user1"
-mkfile -path="/home/user/docs/b.txt" -r -cont="/home/Documents/b.txt"
-cat -file 1="/home/a.txt" -file 2="/home/b.txt" -file 3="/home/c.txt"
+mkdisk -size=1 -unit=K -path="./home/Disco1.dsk"
+fdisk -type=P -fit=FF -unit=B -name="Part1" -size=100 -path="./home/Disco1.dsk"
+fdisk -type=P -fit=FF -unit=B -name="Part2" -size=200 -path="./home/Disco1.dsk"
+fdisk -type=E -fit=FF -unit=B -name="PartEEEE" -size=400 -path="./home/Disco1.dsk"
+fdisk -type=E -fit=FF -unit=B -name="PartEEEE" -size=400 -path="./home/Disco1.dsk"
+fdisk -type=P -fit=FF -unit=B -name="Part4" -size=100 -path="./home/Disco1.dsk"
+fdisk -type=P -fit=FF -unit=B -name="Part4" -size=100 -path="./home/Disco1.dsk"
+
+fdisk -type=L -fit=FF -unit=B -name="PartL1" -size=62 -path="./home/Disco1.dsk"
+fdisk -type=L -fit=FF -unit=B -name="PartL2" -size=124 -path="./home/Disco1.dsk"
+fdisk -type=L -fit=FF -unit=B -name="PartL3" -size=62 -path="./home/Disco1.dsk"
+fdisk -type=L -fit=FF -unit=B -name="PartL4" -size=62 -path="./home/Disco1.dsk"
+fdisk -type=L -fit=FF -unit=B -name="PartL3" -size=100 -path="./home/Disco1.dsk"
+fdisk -type=L -fit=FF -unit=B -name="PartL2" -size=124 -path="./home/Disco1.dsk" -delete=full
+fdisk -type=P -fit=FF -unit=B -name="Part4" -size=100 -path="./home/Disco1.dsk" -delete=full
+fdisk -type=E -fit=FF -unit=B -name="PartEEEE" -size=400 -path="./home/Disco1.dsk" -delete=full
